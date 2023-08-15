@@ -7,7 +7,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Service
 public class TestService {
@@ -41,18 +40,4 @@ public class TestService {
         return member1;
     }
 
-    private Member testORMBiDirection(EntityManager em) {
-        // 팀1 저장
-        Team team = em.find(Team.class, "team4");
-
-        int memberNumber = (int)(Math.random()*100);
-        Member member1 = new Member("member" + memberNumber, "회원" + memberNumber);
-
-        // 양방향 연관관계 설정
-        member1.setTeam(team); // 연관관계 설정 member1 -> team1
-        em.persist(member1);
-
-        return member1;
-
-    }
 }
