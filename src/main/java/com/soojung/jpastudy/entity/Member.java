@@ -25,8 +25,8 @@ public class Member {
     private Integer age;
 
     // 연관관계 매핑
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "TEAM_ID", nullable = false)
     private Team team;
 
     public Member(String id, String username) {
